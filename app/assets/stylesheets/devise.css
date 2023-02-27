@@ -1,0 +1,31 @@
+.field input:not([type='checkbox']) {
+  width: 100%;
+  color: black;
+}
+
+.field {
+  margin: 2rem 0;
+  color: #555;
+}
+
+.actions input {
+  width: 100%;
+  text-align: center;
+  background-color: #2563eb;
+  color: white;
+  padding: 1rem 0;
+  border-radius: 5px;
+}
+
+.actions input:hover {
+  cursor: pointer;
+  background-color: #1e40af;
+}
+
+.actions {
+  margin: 1rem 0;
+}
+
+.links a {
+  color: #2563eb;
+}
