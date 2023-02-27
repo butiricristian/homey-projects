@@ -1,6 +1,10 @@
 div class="flex flex-col items-center w-full"
   h2.text-2xl.mb-2 Log in
 
+  p class="text-green-600"
+    = notice
+  p class="text-red-600"
+    = alert
   = form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "w-full max-w-md" } do |f|
     .field
       = f.label :email

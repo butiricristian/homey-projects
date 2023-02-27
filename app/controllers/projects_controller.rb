@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
   # PATCH /projects/1/toggle_status
   def toggle_status
     if @project.update(toggle_status_params)
-      comment_text = "changed from #{@project.previous_changes[:status].first} to #{@project.status}"
+      comment_text = "changed status from #{@project.previous_changes[:status].first} to #{@project.status}"
       StatusChangeComment.create!(project: @project, user: current_user, text: comment_text)
 
       render partial: 'project_status', locals: { project: @project }
