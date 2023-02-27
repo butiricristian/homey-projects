@@ -1,7 +1,7 @@
 - unless comment.errors.any?
-  - comment = Comment.new
+  - comment = UserComment.new
 
-= form_with model: comment, url: project_comments_path(project), html: { class: "w-full" } do |f|
+= form_for comment, as: :comment, url: project_comments_path(project), html: { class: "w-full" } do |f|
   - if comment.errors.any?
     div style="color: red"
       ul
