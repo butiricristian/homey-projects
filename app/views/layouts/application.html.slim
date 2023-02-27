@@ -11,9 +11,7 @@ html
     = javascript_importmap_tags
 
   body
+    p class="notice": = notice
+    p class="alert": = alert
     main class="container mx-auto mt-28 px-5 flex"
-      p class="notice"
-        = notice
-      p class="alert"
-        = alert
       = yield

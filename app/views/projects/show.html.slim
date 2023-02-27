@@ -1,0 +1,12 @@
+div id="#{dom_id @project}" class="flex flex-column columns-2"
+  .project-details.w-full
+    h2.text-4xl.mb-5= @project.title
+    p.mb-5= @project.description
+
+    div
+      => link_to "Edit this project", edit_project_path(@project), class: "text-blue-600"
+      '|
+      =< link_to "Back to projects", projects_path, class: "text-blue-600"
+
+      = button_to "Destroy this project", @project, method: :delete, class: "text-red-600"
+  .project-history.w-full

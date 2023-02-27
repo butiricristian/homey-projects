@@ -1,0 +1,22 @@
+= form_with model: @project, html: { class: "w-full max-w-md" } do |form|
+  - if @project.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+      ul
+        - @project.errors.each do |error|
+          li = error.full_message
+
+  .field
+    = form.label :title, style: "display: block"
+    = form.text_field :title
+
+  .field
+    = form.label :description, style: "display: block"
+    = form.text_area :description
+
+  .field
+    = form.label :status, style: "display: block"
+    = form.select :status, Project.statuses.map{ |status, value| [status.capitalize, status]}
+
+  .actions
+    = form.submit
