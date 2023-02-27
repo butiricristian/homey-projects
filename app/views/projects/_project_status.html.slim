@@ -5,4 +5,4 @@
       = project.status.capitalize
     = form_with url: toggle_status_project_path(project), method: :patch do |f|
       = hidden_field_tag 'project[status]', project.next_status
-      =< f.submit "Switch to #{project.next_status}", class: "bg-blue-600 ml-2 rounded-md px-4 py-1 text-white"
+      =< f.submit "Switch to #{project.next_status}", class: "bg-blue-600 ml-2 rounded-md px-4 py-1 text-white hover:bg-blue-800 hover:cursor-pointer", data: { turbo_confirm: "Are you sure you want to change the status?" }
