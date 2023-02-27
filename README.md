@@ -24,3 +24,8 @@ There are a couple of questions that I think are worth asking about the requirem
    
 3. Do user comments and status change comments have similar characteristics?
    They seem to be quite similar, so I chose to implement them using single table inheritance and to display them just a bit differently
+
+To run the project locally:
+1. run `rails db:prepare` to initialize the db
+2. make sure you have redis installed and a redis server running `redis-server`
+3. run `bin/dev` to start the server and track all code changes
