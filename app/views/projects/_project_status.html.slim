@@ -3,4 +3,6 @@
   .flex.flex-row.items-center class="#{project.status}"
     span class="#{project.status == :active ? 'text-green-600' : 'text-red-600'}"
       = project.status.capitalize
-    =< button_to "Switch to #{project.next_status}", toggle_status_project_path(project, project: {status: project.next_status}), method: :patch, class: "bg-blue-600 ml-2 rounded-md px-4 py-1 text-white"
+    = form_with url: toggle_status_project_path(project), method: :patch do |f|
+      = hidden_field_tag 'project[status]', project.next_status
+      =< f.submit "Switch to #{project.next_status}", class: "bg-blue-600 ml-2 rounded-md px-4 py-1 text-white"
