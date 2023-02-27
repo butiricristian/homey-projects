@@ -1,0 +1,14 @@
+- unless comment.errors.any?
+  - comment = Comment.new
+
+= form_with model: comment, url: project_comments_path(project), html: { class: "w-full" } do |f|
+  - if comment.errors.any?
+    div style="color: red"
+      ul
+        - comment.errors.each do |error|
+          li = error.full_message
+
+  .field
+    = f.text_area :text, placeholder: "Type your comment here..."
+  .actions
+    = f.submit "Add comment"
