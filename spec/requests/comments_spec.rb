@@ -2,12 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Comments', type: :request do
   let!(:project) { create(:project) }
-  let(:valid_attributes) do
-    { text: "Comment 1" }
-  end
-  let(:invalid_attributes) do
-    { text: "" }
-  end
+  let(:valid_attributes) { { text: 'Comment 1' } }
+  let(:invalid_attributes) { { text: '' } }
 
   let(:user) { create(:user) }
   before(:each) do
