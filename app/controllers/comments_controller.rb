@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_project
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = UserComment.new(comment_params)
     @comment.project_id = @project.id
     @comment.user_id = current_user.id
 

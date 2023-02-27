@@ -1,0 +1,2 @@
+class StatusChangeComment < Comment
+end

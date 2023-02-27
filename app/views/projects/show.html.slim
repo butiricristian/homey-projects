@@ -2,9 +2,9 @@ div id="#{dom_id @project}" class="flex flex-column columns-2"
   .project-details.w-full.mr-2
     == render partial: "project_details", locals: { project: @project }
     = turbo_frame_tag "comments_form"
-      == render partial: "/comments/form", locals: { project: @project, comment: Comment.new }
+      == render partial: "/comments/form", locals: { project: @project, comment: UserComment.new }
   .project-history.w-full.ml-2
     = turbo_stream_from "comments"
     = turbo_frame_tag "comments"
-      - @project.comments.each do |comment|
+      - @project.comments.ordered.each do |comment|
         == render comment
