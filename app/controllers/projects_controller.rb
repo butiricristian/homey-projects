@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :set_project, only: %i[ show edit update destroy toggle_status ]
 
   # GET /projects or /projects.json
   def index
@@ -57,6 +57,18 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # PATCH /projects/1/toggle_status
+  def toggle_status
+    if @project.update(toggle_status_params)
+      comment_text = "changed from #{@project.previous_changes[:status].first} to #{@project.status}"
+      StatusChangeComment.create!(project: @project, user: current_user, text: comment_text)
+
+      render partial: 'project_status', locals: { project: @project }
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -67,5 +79,9 @@ class ProjectsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def project_params
     params.require(:project).permit(:title, :description, :status)
+  end
+
+  def toggle_status_params
+    params.require(:project).permit(:status)
   end
 end

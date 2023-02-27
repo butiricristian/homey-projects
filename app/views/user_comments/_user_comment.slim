@@ -1,3 +1,5 @@
 div id="#{dom_id user_comment}" class="flex flex-col border p-4 border-slate-300 rounded-md my-4"
   p= user_comment.text
-  p.text-sm.italic.text-slate-400= user_comment.user.email
+  .flex.text-sm.text-slate-400
+    p.italic.flex-1= user_comment.user.email
+    p= user_comment.created_at.strftime("%T")

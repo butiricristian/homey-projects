@@ -11,5 +11,8 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :comments, only: [:create]
+    member do
+      patch :toggle_status
+    end
   end
 end

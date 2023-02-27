@@ -1,2 +1,4 @@
-div id="#{dom_id status_change_comment}" class="flex flex-col border p-4 border-slate-300 rounded-md my-4"
-  p #{status_change_comment.user.email} #{status_change_comment.text}
+div id="#{dom_id status_change_comment}" class="flex p-4 text-slate-600 rounded-md"
+  p.flex-1 #{status_change_comment.user.email} #{status_change_comment.text}
+  p.text-sm.text-slate-400= status_change_comment.created_at.strftime("%F %T")
+

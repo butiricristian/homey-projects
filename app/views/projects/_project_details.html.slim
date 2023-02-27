@@ -1,10 +1,12 @@
-h2.text-4xl.mb-5= project.title
+=< link_to "Back to projects", projects_path, class: "text-blue-600"
 
+.flex.flex-row.items-center.mt-5
+  h2.text-4xl.flex-1= project.title
+  = render partial: "project_status", locals: { project: project }
+br
 p.mb-5= project.description
 
-div
+div.flex.space-x-1
   => link_to "Edit this project", edit_project_path(project), class: "text-blue-600"
-  '|
-  =< link_to "Back to projects", projects_path, class: "text-blue-600"
-
+  span |
   = button_to "Destroy this project", project, method: :delete, class: "text-red-600"
