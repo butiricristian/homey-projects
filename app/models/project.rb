@@ -1,10 +1,14 @@
 class Project < ApplicationRecord
   has_many :comments, dependent: :destroy
 
-  enum status: [ :active, :inactive ]
+  enum status: %i[active inactive]
+
+  validates :title, presence: true
+  validates :status, presence: true
 
   def next_status
-    return :inactive if self.status.to_sym == :active
-    return :active
+    return :inactive if status.to_sym == :active
+
+    :active
   end
 end

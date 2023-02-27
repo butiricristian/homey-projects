@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html {render :new, notice: "Comment was successfully created." }
+        format.html { render :new, notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new, status: :unprocessable_entity }
