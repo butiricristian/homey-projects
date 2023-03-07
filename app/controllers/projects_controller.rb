@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: %i[ show edit update destroy toggle_status ]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   # GET /projects or /projects.json
   def index
@@ -26,11 +28,11 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
-        format.json { render :show, status: :created, location: @project }
+        format.html { redirect_to(project_url(@project), notice: "Project was successfully created.") }
+        format.json { render(:show, status: :created, location: @project) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.html { render(:new, status: :unprocessable_entity) }
+        format.json { render(json: @project.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -39,11 +41,11 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to project_url(@project), notice: "Project was successfully updated." }
-        format.json { render :show, status: :ok, location: @project }
+        format.html { redirect_to(project_url(@project), notice: "Project was successfully updated.") }
+        format.json { render(:show, status: :ok, location: @project) }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.html { render(:edit, status: :unprocessable_entity) }
+        format.json { render(json: @project.errors, status: :unprocessable_entity) }
       end
     end
   end
@@ -53,8 +55,8 @@ class ProjectsController < ApplicationController
     @project.destroy!
 
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to(projects_url, notice: "Project was successfully destroyed.") }
+      format.json { head(:no_content) }
     end
   end
 
@@ -65,10 +67,10 @@ class ProjectsController < ApplicationController
         comment_text = "changed status from #{@project.previous_changes[:status].first} to #{@project.status}"
         StatusChangeComment.create!(project: @project, user: current_user, text: comment_text)
 
-        format.html { render partial: 'project_status', locals: { project: @project } }
+        format.html { render(partial: "project_status", locals: { project: @project }) }
         format.turbo_stream
       else
-        render :edit, status: :unprocessable_entity
+        render(:edit, status: :unprocessable_entity)
       end
     end
   end

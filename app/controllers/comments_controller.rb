@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project
@@ -9,11 +11,11 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { render :new, notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @project }
+        format.html { render(:new, notice: "Comment was successfully created.") }
+        format.json { render(:show, status: :created, location: @project) }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.html { render(:new, status: :unprocessable_entity) }
+        format.json { render(json: @project.errors, status: :unprocessable_entity) }
       end
     end
   end
