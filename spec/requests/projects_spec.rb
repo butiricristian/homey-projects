@@ -142,6 +142,29 @@ RSpec.describe("/projects", type: :request) do
         end.to(change(StatusChangeComment, :count).by(1))
       end
     end
+
+    context "with invalid parameters" do
+      before(:each) do
+        allow_any_instance_of(Project).to(receive(:update).and_return(false))
+      end
+
+      it "doesn't change the status of the requested project" do
+        patch toggle_status_project_url(project), params: { project: { status: :inactive } }
+        project.reload
+        expect(project.status.to_sym).to(eq(:active))
+      end
+
+      it "returns 422" do
+        patch toggle_status_project_url(project), params: { project: { status: :inactive } }
+        expect(response).to(have_http_status(:unprocessable_entity))
+      end
+
+      it "doesn't create a status change comment" do
+        expect do
+          patch(toggle_status_project_url(project), params: { project: { status: :inactive } })
+        end.to(change(StatusChangeComment, :count).by(0))
+      end
+    end
   end
 
   describe "DELETE /destroy" do

@@ -71,6 +71,9 @@ group :development, :test do
 
   # Use dotenv for env variables
   gem "dotenv-rails", "~> 2.8"
+
+  # Use simplecov to check test coverage
+  gem "simplecov", "~> 0.22.0"
 end
 
 group :development do
@@ -94,4 +97,7 @@ group :development do
 
   # Use ruby-lsp for linting and formatting
   gem "ruby-lsp", require: false
+
+  # Annotate models
+  gem "annotate"
 end

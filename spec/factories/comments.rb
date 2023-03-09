@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user_comment do
-    text { "User Comment 1" }
+    text { Faker::GreekPhilosophers.quote }
     project
     user
   end

@@ -5,12 +5,13 @@ class CommentsController < ApplicationController
   before_action :set_project
 
   def create
-    @comment = @project.comments.new(comment_params)
+    @comment = UserComment.new(comment_params)
+    @comment.project_id = @project.id
     @comment.user_id = current_user.id
 
     respond_to do |format|
       if @comment.save
-        format.html { render(:new, notice: t(".success")) }
+        format.html { render(:new, notice: "Comment was successfully created.") }
         format.json { render(:show, status: :created, location: @project) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
