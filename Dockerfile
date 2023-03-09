@@ -8,8 +8,8 @@ FROM ruby:$RUBY_VERSION-slim as base
 WORKDIR /rails
 
 # Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_WITHOUT="development"
+# ENV RAILS_ENV="production" \
+#     BUNDLE_WITHOUT="development"
 
 
 # Throw-away build stage to reduce size of final image
@@ -55,4 +55,6 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+# CMD ["./bin/rails", "server"]
+# CMD ["./bin/dev"]
+CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]

@@ -68,6 +68,9 @@ group :development, :test do
 
   # Use faker to generate random test data
   gem "faker"
+
+  # Use dotenv for env variables
+  gem "dotenv-rails", "~> 2.8"
 end
 
 group :development do
@@ -91,7 +94,4 @@ group :development do
 
   # Use ruby-lsp for linting and formatting
   gem "ruby-lsp", require: false
-
-  # Bullet for identifying n+1 selects
-  gem "bullet", "~> 7.0"
 end
