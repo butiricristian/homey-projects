@@ -2,7 +2,7 @@
 
 .flex.flex-row.items-center.mt-5
   h2.text-4xl.flex-1= project.title
-  = render partial: "project_status", locals: { project: project }
+  = render "project_status",  project: project
 br
 p.mb-5= project.description
 

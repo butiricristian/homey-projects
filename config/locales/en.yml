@@ -31,3 +31,13 @@
 
 en:
   hello: "Hello world"
+  projects:
+    create:
+      success: "Project created successfully"
+    destroy:
+      success: "Project deleted successfully"
+    update:
+      success: "Project updated successfully"
+  comments:
+    create:
+      success: "Comment created successfully"

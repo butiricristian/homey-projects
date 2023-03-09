@@ -88,4 +88,10 @@ group :development do
 
   # Use reek to detect code smells
   gem "reek", "~> 6.1"
+
+  # Use ruby-lsp for linting and formatting
+  gem "ruby-lsp", require: false
+
+  # Bullet for identifying n+1 selects
+  gem "bullet", "~> 7.0"
 end
