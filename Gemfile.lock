@@ -106,6 +106,8 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    code_analyzer (0.5.5)
+      sexp_processor
     concurrent-ruby (1.2.2)
     connection_pool (2.3.0)
     crass (1.0.6)
@@ -125,6 +127,7 @@ GEM
       railties (>= 3.2)
     error_highlight (0.5.1)
     erubi (1.12.0)
+    erubis (2.7.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -195,6 +198,14 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
+    rails_best_practices (1.23.2)
+      activesupport
+      code_analyzer (~> 0.5.5)
+      erubis
+      i18n
+      json
+      require_all (~> 3.0)
+      ruby-progressbar
     rainbow (3.1.1)
     rake (13.0.6)
     redis (5.0.6)
@@ -206,6 +217,7 @@ GEM
       parser (~> 3.2.0)
       rainbow (>= 2.0, < 4.0)
     regexp_parser (2.7.0)
+    require_all (3.0.0)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -250,6 +262,7 @@ GEM
       sorbet-runtime
       syntax_tree (>= 6, < 7)
     ruby-progressbar (1.11.0)
+    sexp_processor (4.16.1)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -324,6 +337,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (>= 5.0)
   rails!
+  rails_best_practices
   redis (>= 4.0.1)
   reek (~> 6.1)
   rspec-rails (~> 4.1)

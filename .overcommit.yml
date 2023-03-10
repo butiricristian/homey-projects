@@ -31,6 +31,7 @@ PreCommit:
 
   RailsBestPractices:
     enabled: true
+    command: ["bundle", "exec", "rails_best_practices", "-c config/rails_best_practices.yml"]
 
 #PostCheckout:
 #  ALL: # Special hook name that customizes all hooks of this type
