@@ -74,6 +74,9 @@ group :development, :test do
 
   # Use simplecov to check test coverage
   gem "simplecov", "~> 0.22.0"
+
+  # Use capybara for feature testing
+  gem "capybara", "~> 3.38"
 end
 
 group :development do
